@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Bike from '../Bike/Bike';
+import './Bikes.css'
 
 
 
@@ -14,7 +15,7 @@ const Bikes = () => {
     }, [])
     return (
         <div className="my-5" id="places">
-            <h1 className="my-5">Our Tour Spots</h1>
+            <h1 className="my-5 Bikes-Headline">Our Hot Bikes</h1>
             <div className="container">
                 <div className="row gy-3">
                     {

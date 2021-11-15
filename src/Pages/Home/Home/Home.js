@@ -2,9 +2,9 @@ import React from 'react';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
 import Bikes from '../Bikes/Bikes';
-import Explore from '../Explore/Explore';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header'
+import Reviews from './Reviews/Reviews';
 
 
 const Home = () => {
@@ -13,8 +13,8 @@ const Home = () => {
             <Header></Header>
             <Banner></Banner>
             <Bikes></Bikes>
+            <Reviews></Reviews>
             <About></About>
-            <Explore></Explore>
             <Footer></Footer>
         </div>
     );
