@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Place from '../Place/Place';
+import Bike from '../Bike/Bike';
 
 
 
-const Places = () => {
-    const [places, setPlaces] = useState([]);
+
+const Bikes = () => {
+    const [bikes, setBikes] = useState([]);
 
     useEffect(() => {
-        fetch('https://grim-asylum-43912.herokuapp.com/places')
+        fetch('http://localhost:5000/Bikes')
             .then(res => res.json())
-            .then(data => setPlaces(data))
+            .then(data => setBikes(data.slice(0, 6)))
     }, [])
     return (
         <div className="my-5" id="places">
@@ -17,9 +18,9 @@ const Places = () => {
             <div className="container">
                 <div className="row gy-3">
                     {
-                        places.map(place => <Place
-                            key={place._id}
-                            place={place}></Place>)
+                        bikes.map(bike => <Bike
+                            key={bike._id}
+                            bike={bike}></Bike>)
                     }
                 </div>
             </div>
@@ -27,4 +28,4 @@ const Places = () => {
     );
 };
 
-export default Places;
+export default Bikes;

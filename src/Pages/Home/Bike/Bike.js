@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Place = ({ place }) => {
-    const { name, img, description, _id } = place;
+const Bike = ({ bike }) => {
+    const { name, img, description, _id } = bike;
     return (
-        <div className="col-lg-4 col-md-6">
+        <div className="col-lg-6 col-md-12">
             <Card>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
@@ -13,7 +13,7 @@ const Place = ({ place }) => {
                     <Card.Text>
                         {description.slice(0, 100)}
                     </Card.Text>
-                    <Link to={`/appointment/${_id}`}>
+                    <Link to={`/booking/${_id}`}>
                         <Button variant="warning">Book Now</Button>
                     </Link>
                 </Card.Body>
@@ -22,4 +22,4 @@ const Place = ({ place }) => {
     );
 };
 
-export default Place;
+export default Bike;

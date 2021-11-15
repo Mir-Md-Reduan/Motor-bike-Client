@@ -1,8 +1,8 @@
 import React from 'react';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
-import Contact from '../Contact/Contact';
-import Doctors from '../Places/Places';
+import Bikes from '../Bikes/Bikes';
+import Explore from '../Explore/Explore';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header'
 
@@ -12,9 +12,9 @@ const Home = () => {
         <div id="home">
             <Header></Header>
             <Banner></Banner>
-            <Doctors></Doctors>
+            <Bikes></Bikes>
             <About></About>
-            <Contact></Contact>
+            <Explore></Explore>
             <Footer></Footer>
         </div>
     );

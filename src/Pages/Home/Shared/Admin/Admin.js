@@ -55,17 +55,19 @@ const Admin = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch('https://grim-asylum-43912.herokuapp.com/addTourSpot', {
+        fetch('http://localhost:5000/addTourSpot', {
 
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result));
-        console.log(data);
-        alert('Tourist Spot added successfully');
-        reset();
+            .then((result) => {
+                console.log(result);
+                console.log(data);
+                alert('New Bikes added successfully');
+                reset();
+            })
         // })
         //         .then(res => {
 
