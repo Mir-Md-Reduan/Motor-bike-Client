@@ -10,21 +10,25 @@ const Booking = () => {
     const { user, isLoading } = useAuth();
     const [dataF, setDataF] = useState([]);
     const email = user.email;
+    const { register, handleSubmit, reset } = useForm();
     const status = "pending";
     useEffect(() => {
         fetch(`http://localhost:5000/singleBike/${bookingId}`)
             .then(res => res.json())
-            .then(dataF => setDataF(dataF))
+            .then(dataF => {
+                setDataF(dataF)
+                reset()
+            })
     }, [isLoading]);
-    console.log(dataF);
+    // console.log(dataF);
 
 
-    const { register, handleSubmit, reset } = useForm();
+
     const onSubmit = data => {
         data.status = "pending";
         data.email = email;
         data.status = status;
-        console.log(data)
+
         fetch('http://localhost:5000/booking', {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -63,8 +67,8 @@ const Booking = () => {
                             <div className="booking-details">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <input
-                                        {...register("Name", { required: true })}
-                                        value={dataF?.name}
+                                        {...register("Name")}
+                                        defaultValue={dataF?.name}
                                         className="p-2 m-2 w-75" />
                                     <br />
                                     <input
@@ -79,14 +83,15 @@ const Booking = () => {
                                         className="p-2 m-2 w-75"
                                     />
                                     <br />
+
                                     <input
-                                        {...register("price", { required: true })}
-                                        value={dataF?.price}
+                                        {...register("price")}
+                                        defaultValue={dataF?.price}
                                         className="p-2 m-2 w-75"
                                     />
                                     <br />
                                     <input
-                                        {...register("image", { required: true })}
+                                        {...register("image")}
                                         value={dataF?.img}
                                         className="p-2 m-2 w-75"
                                     />

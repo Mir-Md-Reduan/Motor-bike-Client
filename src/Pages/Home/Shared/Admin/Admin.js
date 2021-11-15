@@ -11,23 +11,22 @@ const Admin = () => {
     const [places, setPlaces] = useState([]);
     const [control, setControl] = useState(false);
     const status = "approved";
-
+    useEffect(() => {
+        fetch('http://localhost:5000/allOrders')
+            .then(res => res.json())
+            .then(data => { setDataF(data) }
+            )
+    }, [control]);
 
 
     const handleUpdate = (id) => {
-        fetch(`https://grim-asylum-43912.herokuapp.com/updateStatus/${id}`, {
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
         });
-
-        console.log(id);
     };
-    useEffect(() => {
-        fetch('https://grim-asylum-43912.herokuapp.com/allOrders')
-            .then(res => res.json())
-            .then(data => setDataF(data))
-    }, [control]);
+
 
 
 
@@ -35,7 +34,7 @@ const Admin = () => {
         fetch('https://grim-asylum-43912.herokuapp.com/places')
             .then(res => res.json())
             .then(dataF => setPlaces(dataF))
-    }, [control]);
+    }, []);
     console.log(places);
 
     const handleDelete = (id) => {
@@ -140,7 +139,7 @@ const Admin = () => {
                             <div className="booking-details">
                                 <h4 className="my-5">Add Tourist Spot</h4>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <input {...register("name", { required: true, maxLength: 20 })} placeholder="name" />
+                                    <input {...register("name", { required: true, maxLength: 30 })} placeholder="name" />
                                     <textarea {...register("description")} placeholder="description" />
                                     <input type="number" {...register("price")} placeholder="price" />
                                     <input {...register("img")} placeholder="imag url" />

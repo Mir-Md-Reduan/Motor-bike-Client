@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import useAuth from '../../../Hooks/useAuth';
+import './MyOrders.css'
 
 const MyOrder = () => {
     const [booking, setBooking] = useState([]);
@@ -9,13 +10,13 @@ const MyOrder = () => {
     const email = user.email;
 
     useEffect(() => {
-        fetch(`https://grim-asylum-43912.herokuapp.com/myOrders/${email}`)
+        fetch(`http://localhost:5000/myOrders/${email}`)
             .then((res) => res.json())
             .then((dataf) => setBooking(dataf));
     }, [control]);
     console.log(booking);
     const handleDelete = (id) => {
-        fetch(`https://grim-asylum-43912.herokuapp.com/deleteOrder/${id}`, {
+        fetch(`http://localhost:5000/deleteOrder/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
@@ -31,15 +32,15 @@ const MyOrder = () => {
         <div className="mt-5">
             <h1 className="my-3">My orders </h1>
             <div className="booking">
-                <div className="row container">
+                <div className="row g-3 container">
                     {booking?.map((pd) => (
-                        <div className="col-md-4">
+                        <div className="col-md-4 ">
                             <div className="service border border p-3">
                                 <div className="booking-img ">
                                     <img className="w-100" src={pd?.image} alt="" />
                                 </div>
-                                <h6>{pd?.Name}</h6>
-                                <p>{pd?.date}</p>
+                                <h6 className="Booking-name">{pd?.Name}</h6>
+                                <p className="Booking-date">{pd?.date}</p>
                                 <h3 className="text-danger"> Cost :{pd?.price}$</h3>
 
                                 <button
