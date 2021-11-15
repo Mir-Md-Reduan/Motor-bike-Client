@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import axios from 'axios';
 import useAuth from '../../../Hooks/useAuth';
 import './Booking.css'
 import { Card, Col, Container, Row } from 'react-bootstrap';
@@ -13,27 +12,30 @@ const Booking = () => {
     const email = user.email;
     const status = "pending";
     useEffect(() => {
-        fetch(`https://grim-asylum-43912.herokuapp.com/singleplace/${bookingId}`)
+        fetch(`http://localhost:5000/singleBike/${bookingId}`)
             .then(res => res.json())
             .then(dataF => setDataF(dataF))
     }, [isLoading]);
     console.log(dataF);
 
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         data.status = "pending";
         data.email = email;
         data.status = status;
         console.log(data)
-        fetch('https://grim-asylum-43912.herokuapp.com/booking', {
+        fetch('http://localhost:5000/booking', {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result));
-        alert('booking is successful');
+            .then((result) => {
+                console.log(result);
+                alert('booking is successful');
+                reset();
+            })
 
     };
 
@@ -47,11 +49,11 @@ const Booking = () => {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={dataF?.img} />
                                 <Card.Body>
-                                    <Card.Title>Tour Spot Name : {dataF?.name}</Card.Title>
+                                    <Card.Title>Motor Bike Name : {dataF?.name}</Card.Title>
                                     <Card.Text>
                                         {dataF?.description}
                                     </Card.Text>
-                                    <h3>Tour price per Person : ${dataF?.price} </h3>
+                                    <h3>Motor Bike price : ${dataF?.price} </h3>
                                 </Card.Body>
                             </Card>
                         </div>
