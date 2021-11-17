@@ -67,8 +67,13 @@ const Booking = () => {
                             <div className="booking-details">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <input
+                                        {...register("Email")}
+                                        defaultValue={user?.email}
+                                        className="p-2 m-2 w-75" />
+                                    <br />
+                                    <input
                                         {...register("Name")}
-                                        defaultValue={dataF?.name}
+                                        defaultValue={dataF?.Name}
                                         className="p-2 m-2 w-75" />
                                     <br />
                                     <input

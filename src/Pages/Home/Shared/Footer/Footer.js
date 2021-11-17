@@ -9,8 +9,8 @@ const Footer = () => {
     const iconElement2 = <FontAwesomeIcon icon={faPhoneAlt} />
     return (
         <div className="footer">
-            <div className="aboutUs-container p-2">
-                <div className="row">
+            <div className="container p-2">
+                <div className="row g-3">
                     <div className="col-lg-4 col-md-6">
                         <div>
                             <h3>Dhaka Office</h3>
@@ -55,7 +55,7 @@ const Footer = () => {
                 </div>
                 <hr />
                 <div className="right-container">
-                    <p>All Right Reserved &copy; 2021</p>
+                    <p>Copyright &copy; 2021</p>
                 </div>
             </div>
         </div>

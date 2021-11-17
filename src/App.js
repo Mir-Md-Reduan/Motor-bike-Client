@@ -11,6 +11,7 @@ import LoginAndRegister from './Pages/Home/Shared/Login/LoginAndRegister/LoginAn
 import PrivateRoute from './Pages/Home/Shared/Login/PrivateRoute/PrivateRoute';
 import Booking from './Pages/Booking/Booking/Booking'
 import Explore from './Pages/Home/Explore/Explore';
+import DashBoard from './Pages/Home/Home/DashBoard/DashBoard/DashBoard';
 
 
 
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route exact path='/explore'>
               <Explore></Explore>
+            </Route>
+            <Route exact path='/dashboard'>
+              <DashBoard></DashBoard>
             </Route>
             <Route exact path='/login'>
               <LoginAndRegister></LoginAndRegister>
