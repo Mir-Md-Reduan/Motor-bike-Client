@@ -37,7 +37,7 @@ function App() {
             <PrivateRoute exact path='/admin'>
               <Admin></Admin>
             </PrivateRoute>
-            <PrivateRoute exact path='/dashboard'>
+            <PrivateRoute path='/dashboard'>
               <DashBoard></DashBoard>
             </PrivateRoute>
             <PrivateRoute exact path='/myOrder'>

@@ -36,7 +36,7 @@ const DashBoard = () => {
                         <div className="dashboard my-5">
                             <h2>Dashboard</h2>
                             <Link to={`${url}`}>
-                                <li className="dashboard-menu mt-3 text-decoration-none">DashBoard</li>
+                                <li className="dashboard-menu mt-3 ">DashBoard</li>
                             </Link>
                             <Link to={`${url}/payment`}>
                                 <li className="dashboard-menu mt-3 text-decoration-none">Payment</li>
@@ -78,25 +78,25 @@ const DashBoard = () => {
                             <Route exact path={path}>
                                 <h2>Select One</h2>
                             </Route>
-                            <Route exact path={`${path}/payment`}>
+                            <Route path={`${path}/payment`}>
                                 <Payment></Payment>
                             </Route>
-                            <Route exact path={`${path}/myOrders`}>
+                            <Route path={`${path}/myOrders`}>
                                 <MyOrder></MyOrder>
                             </Route>
                             <Route path={`${path}/review`}>
                                 <Reviews></Reviews>
                             </Route>
-                            <Route exact path={`${path}/manageOrders`}>
+                            <Route path={`${path}/manageOrders`}>
                                 <ManageOrders></ManageOrders>
                             </Route>
-                            <Route exact path={`${path}/addABike`}>
+                            <Route path={`${path}/addABike`}>
                                 <AddBike></AddBike>
                             </Route>
-                            <Route exact path={`${path}/makeAdmin`}>
+                            <Route path={`${path}/makeAdmin`}>
                                 <MakeAdmin></MakeAdmin>
                             </Route>
-                            <Route exact path={`${path}/manageBike`}>
+                            <Route path={`${path}/manageBike`}>
                                 <ManageBike></ManageBike>
                             </Route>
                         </Switch>
