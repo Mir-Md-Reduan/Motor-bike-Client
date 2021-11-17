@@ -3,10 +3,17 @@ import { Link, useRouteMatch, Switch, Route } from "react-router-dom";
 import useAuth from '../../../../../Hooks/useAuth';
 import "./DashBoard.css";
 import Reviews from '../../Reviews/Reviews';
+import MyOrder from '../../../My Order/MyOrder';
+import { Button } from 'react-bootstrap';
+import Payment from '../NormalUser/Payment/Payment';
+import ManageOrders from './ManageOrders/ManageOrders';
+import AddBike from './Admin/AddBike/AddBike';
+import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
+import ManageBike from './Admin/ManageBike/ManageBike';
 
 const DashBoard = () => {
     let { path, url } = useRouteMatch();
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
@@ -23,58 +30,74 @@ const DashBoard = () => {
     console.log(isAdmin);
     return (
         <div>
-            <div className="dashboard-container ">
+            <div className="dashboard-container my-5">
                 <div className="row">
                     <div className="col-md-3 ">
-                        <div className="dashboard">
-                            <h5>Dashboard</h5>
+                        <div className="dashboard my-5">
+                            <h2>Dashboard</h2>
                             <Link to={`${url}`}>
-                                <li className="dashboard-menu mt-5">Book</li>
+                                <li className="dashboard-menu mt-3 text-decoration-none">DashBoard</li>
                             </Link>
-
-                            <Link to={`${url}/BookingList`}>
-                                <li className="dashboard-menu mt-5">Booking list</li>
+                            <Link to={`${url}/payment`}>
+                                <li className="dashboard-menu mt-3 text-decoration-none">Payment</li>
                             </Link>
-
+                            <Link to={`${url}/myOrders`}>
+                                <li className="dashboard-menu mt-3 text-decoration-none">My Orders</li>
+                            </Link>
                             <Link to={`${url}/review`}>
-                                <li className="dashboard-menu mt-5">Review</li>
+                                <li className="dashboard-menu mt-3 text-decoration-none">Review</li>
                             </Link>
+                            <br />
+                            <Button onClick={logOut} variant="light">LogOut</Button>
                             <div className="admin-dashboard">
-                                <li className="dashboard-menu mt-5">Orders list</li>
+                                {/* <li className="dashboard-menu mt-5">Orders list</li> */}
 
-                                {isAdmi && (
-                                    <Link to={`${url}/addService`}>
-                                        <li className="dashboard-menu">Add Service</li>
-                                    </Link>
+                                {isAdmin && (
+                                    <div>
+                                        <Link to={`${url}/manageOrders`}>
+                                            <li className="dashboard-menu">Manage Orders</li>
+                                        </Link>
+                                        <Link to={`${url}/addABike`}>
+                                            <li className="dashboard-menu">Add a Bike</li>
+                                        </Link>
+                                        <Link to={`${url}/makeAdmin`}>
+                                            <li className="dashboard-menu">Make Admin</li>
+                                        </Link>
+                                        <Link to={`${url}/manageBike`}>
+                                            <li className="dashboard-menu">Manage Bike</li>
+                                        </Link>
+                                    </div>
+
                                 )}
-                                <Link to={`${url}/makeAdmin`}>
-                                    <li className="dashboard-menu">Make Admin</li>
-                                </Link>
-                                <Link to={`${url}/manageServices`}>
-                                    <li className="dashboard-menu">Manage Service</li>
-                                </Link>
+
                             </div>
                         </div>
                     </div>
                     <div className="col-md-9">
                         <Switch>
                             <Route exact path={path}>
-                                <MyBookings></MyBookings>
+                                <h2>Select One</h2>
                             </Route>
-                            <Route exact path={`${path}/review`}>
+                            <Route exact path={`${path}/payment`}>
+                                <Payment></Payment>
+                            </Route>
+                            <Route exact path={`${path}/myOrders`}>
+                                <MyOrder></MyOrder>
+                            </Route>
+                            <Route path={`${path}/review`}>
                                 <Reviews></Reviews>
                             </Route>
-                            <Route exact path={`${path}/BookingList`}>
-                                <MyBookings></MyBookings>
+                            <Route exact path={`${path}/manageOrders`}>
+                                <ManageOrders></ManageOrders>
+                            </Route>
+                            <Route exact path={`${path}/addABike`}>
+                                <AddBike></AddBike>
                             </Route>
                             <Route exact path={`${path}/makeAdmin`}>
                                 <MakeAdmin></MakeAdmin>
                             </Route>
-                            <Route exact path={`${path}/addService`}>
-                                <AddServices></AddServices>
-                            </Route>
-                            <Route exact path={`${path}/manageServices`}>
-                                <ManageServices></ManageServices>
+                            <Route exact path={`${path}/manageBike`}>
+                                <ManageBike></ManageBike>
                             </Route>
                         </Switch>
                     </div>

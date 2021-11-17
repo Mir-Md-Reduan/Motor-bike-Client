@@ -31,14 +31,14 @@ function App() {
             <Route exact path='/explore'>
               <Explore></Explore>
             </Route>
-            <Route exact path='/dashboard'>
-              <DashBoard></DashBoard>
-            </Route>
             <Route exact path='/login'>
               <LoginAndRegister></LoginAndRegister>
             </Route>
             <PrivateRoute exact path='/admin'>
               <Admin></Admin>
+            </PrivateRoute>
+            <PrivateRoute exact path='/dashboard'>
+              <DashBoard></DashBoard>
             </PrivateRoute>
             <PrivateRoute exact path='/myOrder'>
               <MyOrder></MyOrder>

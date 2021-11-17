@@ -20,13 +20,12 @@ const Booking = () => {
                 reset()
             })
     }, [isLoading]);
-    // console.log(dataF);
+    console.log(dataF.name);
 
 
 
     const onSubmit = data => {
         data.status = "pending";
-        data.email = email;
         data.status = status;
 
         fetch('http://localhost:5000/booking', {
@@ -73,7 +72,17 @@ const Booking = () => {
                                     <br />
                                     <input
                                         {...register("Name")}
-                                        defaultValue={dataF?.Name}
+                                        defaultValue={dataF?.name}
+                                        className="p-2 m-2 w-75" />
+                                    <br />
+                                    <input
+                                        {...register("Phone_No")}
+                                        placeholder="Your Phone No Please!"
+                                        className="p-2 m-2 w-75" />
+                                    <br />
+                                    <input
+                                        {...register("Address")}
+                                        placeholder="Your Address Please!"
                                         className="p-2 m-2 w-75" />
                                     <br />
                                     <input
@@ -82,13 +91,6 @@ const Booking = () => {
                                         className="p-2 m-2 w-75"
                                     />
                                     <br />
-                                    <input
-                                        {...register("comments")}
-                                        placeholder="comments"
-                                        className="p-2 m-2 w-75"
-                                    />
-                                    <br />
-
                                     <input
                                         {...register("price")}
                                         defaultValue={dataF?.price}

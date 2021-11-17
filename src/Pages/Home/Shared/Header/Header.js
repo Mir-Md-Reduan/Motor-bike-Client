@@ -17,23 +17,20 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link as={HashLink} className="header-link" to="/home#home">Home</Nav.Link>
-                            <Nav.Link as={HashLink} className="header-link" to="/home#places">Bikes</Nav.Link>
+                            <Nav.Link as={HashLink} className="header-link" to="/home#bikes">Bikes</Nav.Link>
                             <Nav.Link as={HashLink} className="header-link" to="/home#about">About</Nav.Link>
                             <Nav.Link as={HashLink} className="header-link" to="/explore">Explore</Nav.Link>
-                            <Nav.Link as={HashLink}
-                                className="header-link" to="/admin">Admin</Nav.Link>
-                            <Nav.Link as={HashLink}
-                                className="header-link" to="/dashboard">DashBoard</Nav.Link>
-                            <Nav.Link as={HashLink}
-                                className="header-link" to="/myOrder">My Orders</Nav.Link>
                             <Navbar.Text>
                                 <a href="#login">{user?.displayName}</a>
                             </Navbar.Text>
                             {
                                 user?.email ?
-                                    <Button onClick={logOut} variant="light">LogOut</Button> :
+                                    <div>
+                                        <Nav.Link as={Link} to="/dashboard">DashBoard</Nav.Link>
+                                        <Button onClick={logOut} variant="light">LogOut</Button>
+                                    </div>
+                                    :
                                     <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

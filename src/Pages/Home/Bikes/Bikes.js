@@ -14,7 +14,7 @@ const Bikes = () => {
             .then(data => setBikes(data.slice(0, 6)))
     }, [])
     return (
-        <div className="my-5" id="places">
+        <div className="my-5" id="bikes">
             <h1 className="my-5 Bikes-Headline">Our Hot Bikes</h1>
             <div className="container">
                 <div className="row gy-3">
