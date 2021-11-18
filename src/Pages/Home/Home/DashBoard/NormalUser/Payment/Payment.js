@@ -2,8 +2,9 @@ import React from 'react';
 
 const Payment = () => {
     return (
-        <div>
-            <h2>Payment Option is comming</h2>
+        <div className="my-5 d-flex justify-content-center align-content-center">
+
+            <h2 className="my-5 text-white">Payment Option is comming....</h2>
         </div>
     );
 };

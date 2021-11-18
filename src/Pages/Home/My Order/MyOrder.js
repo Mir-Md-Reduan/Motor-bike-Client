@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import useAuth from '../../../Hooks/useAuth';
-import './MyOrders.css'
+import './MyOrder.css'
 
 const MyOrder = () => {
     const [booking, setBooking] = useState([]);
@@ -12,7 +12,7 @@ const MyOrder = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/myOrders/${email}`)
             .then((res) => res.json())
-            .then((dataf) => setBooking(dataf));
+            .then((data) => setBooking(data));
     }, [control]);
     console.log(booking);
     const handleDelete = (id) => {

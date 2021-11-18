@@ -121,7 +121,7 @@ const Admin = () => {
                                                         </div>
 
                                                         <h6>{pd?.name}</h6>
-                                                        <Button onClick={() => handleDelete(pd?._id)}>Delete</Button>
+
                                                         <p>{pd?.email}</p>
                                                         <h3 className="text-danger"> Cost :{pd?.price}$</h3>
                                                     </div>
