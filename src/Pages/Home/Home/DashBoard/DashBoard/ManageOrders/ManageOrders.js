@@ -28,8 +28,8 @@ const ManageOrders = () => {
     return (
         <div>
             <div className="left-side my-5">
-                <Card style={{ width: '18rem' }}>
-                    <h2>List of All Booking Tourist Spot</h2>
+                <Card className=" d-flex justify-content-center align-content-center">
+                    <h2>List of All Booking Bikes</h2>
                     <div className="container">
                         <div className="row gy-3">
                             {

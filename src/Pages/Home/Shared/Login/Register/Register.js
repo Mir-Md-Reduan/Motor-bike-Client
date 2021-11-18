@@ -4,20 +4,19 @@ import useAuth from '../../../../../Hooks/useAuth';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Register = () => {
-    const { handleEmailChange, handlePasswordChange, handleUserRegister, setIsLoading, setUser } = useAuth();
+    const { handleEmailChange, handlePasswordChange, handleUserRegister, setIsLoading, setUser, email, password } = useAuth();
 
-    const history = useHistory()
-    const location = useLocation()
-    const url = location.state?.from || "/home"
+    const history = useHistory();
+    const location = useLocation();
+    const url = location.state?.from || "/home";
 
     const handleRegistration = (e) => {
         e.preventDefault();
-        handleUserRegister(handleEmailChange, handlePasswordChange)
+        handleUserRegister(email, password)
             .then((res) => {
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
-
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -36,7 +35,7 @@ const Register = () => {
                         <br />
                         <form onSubmit={handleRegistration} >
                             <input
-                                onChange={handleEmailChange}
+                                onBlur={handleEmailChange}
                                 className="input-felid"
                                 type="email"
                                 name="email"
@@ -46,7 +45,7 @@ const Register = () => {
                             <br />
                             <br />
                             <input
-                                onChange={handlePasswordChange}
+                                onBlur={handlePasswordChange}
                                 className="input-felid"
                                 type="password"
                                 name="password"

@@ -6,7 +6,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 
 const Login = () => {
 
-    const { signInUsingGoogle, setUser, setIsLoading, handleEmailChange, handlePasswordChange, user, handleUserLogin } = useAuth();
+    const { signInUsingGoogle, setUser, setIsLoading, handleEmailChange, handlePasswordChange, user, handleUserLogin, email, password } = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -15,13 +15,14 @@ const Login = () => {
 
     const handleLoginWithEmailAndPassword = (e) => {
         e.preventDefault();
+        console.log(email, password);
 
-        handleUserLogin(handleEmailChange, handlePasswordChange)
+        handleUserLogin(email, password)
             .then((res) => {
                 setIsLoading(true)
-                setUser(res.user);
+                setUser(res.user)
                 history.push(url)
-                // ...
+
             })
             .catch((error) => {
                 const errorCode = error.code;
