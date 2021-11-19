@@ -6,14 +6,14 @@ const ManageOrders = () => {
     const [dataF, setDataF] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://boiling-island-29572.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => { setDataF(data) }
             )
     }, [control]);
 
     const handleDelete = (id) => {
-        fetch(`https://grim-asylum-43912.herokuapp.com/delteOrder/${id}`, {
+        fetch(`https://boiling-island-29572.herokuapp.com/delteOrder/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

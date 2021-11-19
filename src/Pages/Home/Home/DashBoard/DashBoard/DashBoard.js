@@ -3,13 +3,14 @@ import { Link, useRouteMatch, Switch, Route } from "react-router-dom";
 import useAuth from '../../../../../Hooks/useAuth';
 import "./DashBoard.css";
 import Reviews from '../../Reviews/Reviews';
-import MyOrder from '../../../My Order/MyOrder';
+
 import { Button } from 'react-bootstrap';
 import Payment from '../NormalUser/Payment/Payment';
 import ManageOrders from './ManageOrders/ManageOrders';
 import AddBike from './Admin/AddBike/AddBike';
 import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
 import ManageBike from './Admin/ManageBike/ManageBike';
+import MyOrder from '../../../My Order/MyOrder';
 
 const DashBoard = () => {
     let { path, url } = useRouteMatch();
@@ -17,7 +18,7 @@ const DashBoard = () => {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
+        fetch(`https://boiling-island-29572.herokuapp.com/checkAdmin/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data[0]?.role === "admin") {

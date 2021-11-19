@@ -10,13 +10,13 @@ const MyOrder = () => {
     const email = user.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myBookings/${email}`)
+        fetch(`https://boiling-island-29572.herokuapp.com/myBookings/${email}`)
             .then((res) => res.json())
             .then((data) => setBooking(data));
     }, [email]);
     console.log(booking);
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://boiling-island-29572.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

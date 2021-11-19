@@ -5,14 +5,14 @@ const ManageBike = () => {
     const [bikes, setBikes] = useState();
     const [control, setControl] = useState();
     useEffect(() => {
-        fetch('http://localhost:5000/bikes')
+        fetch('https://boiling-island-29572.herokuapp.com/bikes')
             .then(res => res.json())
             .then(dataF => setBikes(dataF))
     }, [control]);
     console.log(bikes);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteBike/${id}`, {
+        fetch(`https://boiling-island-29572.herokuapp.com/deleteBike/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
