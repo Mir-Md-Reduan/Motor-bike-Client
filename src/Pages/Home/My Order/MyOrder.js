@@ -14,7 +14,7 @@ const MyOrder = () => {
         fetch(`https://boiling-island-29572.herokuapp.com/myBookings/${email}`)
             .then((res) => res.json())
             .then((data) => setBooking(data));
-    }, [email]);
+    }, [control]);
     // console.log(booking);
     const handleDelete = (id) => {
         fetch(`https://boiling-island-29572.herokuapp.com/deleteOrder/${id}`, {
