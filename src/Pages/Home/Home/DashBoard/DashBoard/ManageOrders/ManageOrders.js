@@ -11,6 +11,7 @@ const ManageOrders = () => {
             .then(data => { setDataF(data) }
             )
     }, [control]);
+    console.log(dataF);
 
     const handleDelete = (id) => {
         fetch(`https://boiling-island-29572.herokuapp.com/delteOrder/${id}`, {
@@ -23,7 +24,7 @@ const ManageOrders = () => {
                     alert('Booking Is Deleted Successfully');
                 }
             });
-        console.log(id);
+        console.log(dataF);
     };
     return (
         <div>
@@ -43,7 +44,7 @@ const ManageOrders = () => {
 
                                             <h6>{pd?.Name}</h6>
 
-                                            <p>{pd?.email}</p>
+                                            <p>{pd?.Email}</p>
                                             <h3 className="text-danger"> Cost :{pd?.price}$</h3>
                                         </div>
                                     </div>

@@ -8,13 +8,14 @@ const MyOrder = () => {
     const [control, setControl] = useState(false);
     const { user } = useAuth();
     const email = user.email;
+    console.log(user);
 
     useEffect(() => {
-        fetch(`https://boiling-island-29572.herokuapp.com/myBookings/${email}`)
+        fetch(`http://localhost:5000/myBookings/${email}`)
             .then((res) => res.json())
             .then((data) => setBooking(data));
     }, [email]);
-    console.log(booking);
+    // console.log(booking);
     const handleDelete = (id) => {
         fetch(`https://boiling-island-29572.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
