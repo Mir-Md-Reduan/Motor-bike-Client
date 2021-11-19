@@ -11,7 +11,7 @@ const MyOrder = () => {
     console.log(user);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myBookings/${email}`)
+        fetch(`https://boiling-island-29572.herokuapp.com/myBookings/${email}`)
             .then((res) => res.json())
             .then((data) => setBooking(data));
     }, [email]);
