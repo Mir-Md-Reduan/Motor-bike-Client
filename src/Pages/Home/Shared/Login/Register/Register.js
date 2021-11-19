@@ -4,7 +4,7 @@ import useAuth from '../../../../../Hooks/useAuth';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Register = () => {
-    const { handleEmailChange, handlePasswordChange, handleUserRegister, setIsLoading, setUser, email, password } = useAuth();
+    const { handleEmailChange, handlePasswordChange, handleUserRegister, setIsLoading, setUser, email, password, hanldeUserInfoRegister } = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -17,6 +17,7 @@ const Register = () => {
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
+                hanldeUserInfoRegister(res.user.email, "POST")
             })
             .catch((error) => {
                 const errorMessage = error.message;

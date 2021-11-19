@@ -47,6 +47,15 @@ const useFirebase = () => {
     const handleUserRegister = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     };
+    const hanldeUserInfoRegister = (email, method) => {
+        fetch("http://localhost:5000/addUser", {
+            method: method,
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ email }),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+    };
 
     const handleUserLogin = (email, password) => {
         // e.preventDefault();
@@ -81,7 +90,8 @@ const useFirebase = () => {
         error,
         email,
         password,
-        handlePasswordChange
+        handlePasswordChange,
+        hanldeUserInfoRegister
     }
 }
 export default useFirebase;

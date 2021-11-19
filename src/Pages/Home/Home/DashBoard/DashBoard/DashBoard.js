@@ -16,17 +16,17 @@ const DashBoard = () => {
     const { user, logOut } = useAuth();
     const [isAdmin, setIsAdmin] = useState(false);
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             if (data[0]?.role === "admin") {
-    //                 setIsAdmin(true);
-    //             } else {
-    //                 setIsAdmin(false);
-    //             }
-    //         });
-    // }, [user?.email]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data[0]?.role === "admin") {
+                    setIsAdmin(true);
+                } else {
+                    setIsAdmin(false);
+                }
+            });
+    }, [user?.email]);
     console.log(isAdmin);
     return (
         <div>
@@ -35,39 +35,41 @@ const DashBoard = () => {
                     <div className="col-md-3 ">
                         <div className="dashboard my-5">
                             <h2>Dashboard</h2>
-                            <Link to={`${url}`}>
-                                <li className="dashboard-menu mt-3 ">DashBoard</li>
-                            </Link>
-                            <Link to={`${url}/payment`}>
-                                <li className="dashboard-menu mt-3 text-decoration-none">Payment</li>
-                            </Link>
-                            <Link to={`${url}/myOrders`}>
-                                <li className="dashboard-menu mt-3 text-decoration-none">My Orders</li>
-                            </Link>
-                            <Link to={`${url}/review`}>
-                                <li className="dashboard-menu mt-3 text-decoration-none">Review</li>
-                            </Link>
-                            <br />
-                            <Button onClick={logOut} variant="light">LogOut</Button>
-                            <div className="admin-dashboard">
-                                {/* {isAdmin && ( */}
+                            {!isAdmin && (
                                 <div>
-                                    <Link to={`${url}/manageOrders`}>
-                                        <li className="dashboard-menu">Manage Orders</li>
+                                    <Link to={`${url}/payment`}>
+                                        <li className="dashboard-menu mt-3 text-decoration-none">Payment</li>
                                     </Link>
-                                    <Link to={`${url}/addABike`}>
-                                        <li className="dashboard-menu">Add a Bike</li>
+                                    <Link to={`${url}/myOrders`}>
+                                        <li className="dashboard-menu mt-3 text-decoration-none">My Orders</li>
                                     </Link>
-                                    <Link to={`${url}/makeAdmin`}>
-                                        <li className="dashboard-menu">Make Admin</li>
+                                    <Link to={`${url}/review`}>
+                                        <li className="dashboard-menu mt-3 text-decoration-none">Review</li>
                                     </Link>
-                                    <Link to={`${url}/manageBike`}>
-                                        <li className="dashboard-menu">Manage Bike</li>
-                                    </Link>
+                                    <br />
+                                    <Button onClick={logOut} variant="light">LogOut</Button>
                                 </div>
+                            )}
 
-                                {/* ) */}
-                                {/* } */}
+                            <div className="admin-dashboard">
+                                {isAdmin && (
+                                    <div>
+                                        <Link to={`${url}/manageOrders`}>
+                                            <li className="dashboard-menu">Manage Orders</li>
+                                        </Link>
+                                        <Link to={`${url}/addABike`}>
+                                            <li className="dashboard-menu">Add a Bike</li>
+                                        </Link>
+                                        <Link to={`${url}/makeAdmin`}>
+                                            <li className="dashboard-menu">Make Admin</li>
+                                        </Link>
+                                        <Link to={`${url}/manageBike`}>
+                                            <li className="dashboard-menu">Manage Bike</li>
+                                        </Link>
+                                    </div>
+
+                                )
+                                }
 
                             </div>
                         </div>

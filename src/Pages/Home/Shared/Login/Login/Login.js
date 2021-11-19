@@ -6,7 +6,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 
 const Login = () => {
 
-    const { signInUsingGoogle, setUser, setIsLoading, handleEmailChange, handlePasswordChange, user, handleUserLogin, email, password } = useAuth();
+    const { signInUsingGoogle, setUser, setIsLoading, handleEmailChange, handlePasswordChange, user, handleUserLogin, email, password, hanldeUserInfoRegister } = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -22,7 +22,6 @@ const Login = () => {
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
-
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -39,6 +38,7 @@ const Login = () => {
                 setIsLoading(true)
                 setUser(res.user)
                 history.push(url)
+                hanldeUserInfoRegister(res.user.email, "PUT")
             }
             )
             .catch((err) => console.log(err))

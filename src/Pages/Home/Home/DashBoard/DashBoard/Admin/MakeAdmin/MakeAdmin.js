@@ -4,18 +4,15 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch('http://localhost:5000/addBike', {
+        fetch('http://localhost:5000/makeAdmin', {
 
-            method: "POST",
+            method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
-                console.log(data);
-                alert('New Bikes added successfully');
-                reset();
+
             })
     };
     return (
