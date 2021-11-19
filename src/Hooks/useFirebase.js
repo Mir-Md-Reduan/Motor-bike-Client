@@ -48,7 +48,7 @@ const useFirebase = () => {
         return createUserWithEmailAndPassword(auth, email, password)
     };
     const hanldeUserInfoRegister = (email, method) => {
-        fetch("http://localhost:5000/addUser", {
+        fetch("https://boiling-island-29572.herokuapp.com/addUser", {
             method: method,
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ email }),

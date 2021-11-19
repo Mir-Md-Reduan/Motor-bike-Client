@@ -28,7 +28,7 @@ const Booking = () => {
         data.status = "pending";
         data.status = status;
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://boiling-island-29572.herokuapp.com/booking', {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

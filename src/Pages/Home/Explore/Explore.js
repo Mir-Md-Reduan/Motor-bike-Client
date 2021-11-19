@@ -6,7 +6,7 @@ const Explore = () => {
     const [bikes, setBikes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/Bikes')
+        fetch('https://boiling-island-29572.herokuapp.com/Bikes')
             .then(res => res.json())
             .then(data => setBikes(data))
     }, [])
