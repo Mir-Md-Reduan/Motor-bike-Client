@@ -5,7 +5,6 @@ import AuthProvider from './Context/AuthProvider';
 import Home from './Pages/Home/Home/Home';
 import MyOrder from './Pages/Home/My Order/MyOrder';
 import NotFound from './Pages/Home/NotFound/NotFound';
-import Admin from './Pages/Home/Shared/Admin/Admin';
 import Header from './Pages/Home/Shared/Header/Header';
 import LoginAndRegister from './Pages/Home/Shared/Login/LoginAndRegister/LoginAndRegister';
 import PrivateRoute from './Pages/Home/Shared/Login/PrivateRoute/PrivateRoute';
@@ -34,9 +33,6 @@ function App() {
             <Route exact path='/login'>
               <LoginAndRegister></LoginAndRegister>
             </Route>
-            <PrivateRoute exact path='/admin'>
-              <Admin></Admin>
-            </PrivateRoute>
             <PrivateRoute path='/dashboard'>
               <DashBoard></DashBoard>
             </PrivateRoute>

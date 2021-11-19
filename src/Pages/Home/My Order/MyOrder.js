@@ -10,10 +10,10 @@ const MyOrder = () => {
     const email = user.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${email}`)
+        fetch(`http://localhost:5000/myBookings/${email}`)
             .then((res) => res.json())
             .then((data) => setBooking(data));
-    }, [control]);
+    }, [email]);
     console.log(booking);
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/deleteOrder/${id}`, {
@@ -30,7 +30,7 @@ const MyOrder = () => {
     };
     return (
         <div className="mt-5">
-            <h1 className="my-3">My orders </h1>
+            <h1 className="my-3 text-white">My orders </h1>
             <div className="booking">
                 <div className="row g-3 container">
                     {booking?.map((pd) => (
