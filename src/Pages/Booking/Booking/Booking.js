@@ -13,7 +13,7 @@ const Booking = () => {
     const { register, handleSubmit, reset } = useForm();
     const status = "pending";
     useEffect(() => {
-        fetch(`http://localhost:5000/singleBike/${bookingId}`)
+        fetch(`https://boiling-island-29572.herokuapp.com/singleBike/${bookingId}`)
             .then(res => res.json())
             .then(dataF => {
                 setDataF(dataF)
