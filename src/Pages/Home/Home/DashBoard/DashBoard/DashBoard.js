@@ -78,7 +78,7 @@ const DashBoard = () => {
                     <div className="col-md-9">
                         <Switch>
                             <Route exact path={path}>
-                                <h2>Select One</h2>
+                                <h2>Select One.</h2>
                             </Route>
                             <Route path={`${path}/payment`}>
                                 <Payment></Payment>
